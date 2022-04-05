@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "djangoauth"
 version = "0.1.0"
-description = "Django authentication and authorisation playground"
+description = "Django authentication and authorization playground"
 authors = ["Louis Agyapong <agyapong.louis@gmail.com>"]
 
 [tool.poetry.dependencies]
