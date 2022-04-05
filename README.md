@@ -1,1 +1,1 @@
-### Django authentication and authorisation playground
+### Django authentication and authorization playground
