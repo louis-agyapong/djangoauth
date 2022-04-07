@@ -27,8 +27,8 @@ class User(AbstractBaseUser, PermissionsMixin):
             return ("%s %s %s" % (self.first_name, self.middle_name, self.last_name)).strip()
         return self.email
 
-    def short_name(self):
-        return f"{self.last_name}_{self.first_name}"
+    def short_name(self) -> str:
+        return f"{self.last_name.lower()}_{self.first_name.lower()}"
 
     def __str__(self):
         return self.full_name
