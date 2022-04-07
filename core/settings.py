@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "apps.inventory",
     # External apps
     "django_extensions",
+    "guardian",
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,9 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "account.User"
+
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "guardian.backends.ObjectPermissionBackend",
+)
