@@ -20,7 +20,6 @@ class CustomUserAdmin(UserAdmin):
                     "first_name",
                     "last_name",
                     "middle_name",
-                    "date_of_birth",
                 )
             },
         ),
