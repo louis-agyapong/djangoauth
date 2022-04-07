@@ -1,7 +1,7 @@
-from asyncio import FastChildWatcher
 from django.contrib import admin
 from django.http import HttpRequest
 from django.http import HttpRequest
+from django.utils import timezone
 
 from .models import Product
 
@@ -39,10 +39,17 @@ class ProductAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
         return False
 
     def has_change_permission(self, request: HttpRequest, obj=None) -> bool:
-        return False
+        if request.user.has_perm("inventory.change_product"):
+            return True
+        else:
+            return False
 
     def has_delete_permission(self, request: HttpRequest, obj=None) -> bool:
         return False
 
     def has_view_permission(self, request: HttpRequest, obj=None) -> bool:
-        return super().has_view_permission(request, obj)
+        """user can view content from 9:00 to 17:00"""
+        time_now = timezone.now()
+        if time_now.hour >= 9 and time_now.hour <= 17:
+            return True
+        return False
