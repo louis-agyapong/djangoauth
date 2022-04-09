@@ -74,6 +74,10 @@ class ProductAdmin(GuardedModelAdmin):
         return self.get_model_objects(request).exists()
 
     def get_model_objects(self, request, action=None, klass=None):
+        """
+        This function returns a list of items based on the object
+        permissions for a particular user.
+        """
         opts = self.opts
         actions = [action] if action else ["view", "edit", "delete"]
         klass = klass if klass else opts.model
@@ -93,9 +97,6 @@ class ProductAdmin(GuardedModelAdmin):
 
     def has_view_permission(self, request: HttpRequest, obj=None) -> bool:
         return self.has_permission(request, obj, "view")
-
-    # def has_add_permission(self, request: HttpRequest) -> bool:
-    #     return self.has_permission(request, None, "add")
 
     def has_change_permission(self, request: HttpRequest, obj=None) -> bool:
         return self.has_permission(request, obj, "change")
